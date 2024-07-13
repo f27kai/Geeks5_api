@@ -1,8 +1,17 @@
+from django.db.models import Avg
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import CategorySerializer, ProductSerializer, ReviewSerializer
+from .serializers import CategorySerializer, ProductSerializer, ReviewSerializer, ProductWithReviewsSerializer
 from .models import Category, Product, Review
+
+
+
+@api_view(['GET'])
+def product_reviews_list_api_view(request):
+    products = Product.objects.annotate(rating=Avg('review__stars')).prefetch_related('review_set')
+    data = ProductWithReviewsSerializer(products, many=True).data
+    return Response(data=data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def category_list_api_view(request):
