@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'product',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'shop_api.wsgi.application'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'EMAIL_HOST_USER'  # Ваш email
+EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'  # Ваш пароль от email
+
 
 
 # Database
