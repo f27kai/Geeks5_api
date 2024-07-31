@@ -1,18 +1,18 @@
 from django.urls import path
 from .views import (
-    products_list_api_view,
-    products_detail_api_view,
-    reviews_list_api_view,
-    reviews_detail_api_view,
-    categories_list_api_view,
-    categories_detail_api_view
+    ProductListCreateAPIView,
+    ProductRetrieveUpdateDestroyAPIView,
+    ReviewListCreateAPIView,
+    ReviewRetrieveUpdateDestroyAPIView,
+    CategoryListCreateAPIView,
+    CategoryRetrieveUpdateDestroyAPIView,
 )
 
 urlpatterns = [
-    path('categories/', categories_list_api_view, name='category-list'),
-    path('categories/<int:id>/', categories_detail_api_view, name='category-detail'),
-    path('products/', products_list_api_view, name='product-list'),
-    path('products/<int:id>/', products_detail_api_view, name='product-detail'),
-    path('reviews/', reviews_list_api_view, name='review-list'),
-    path('reviews/<int:id>/', reviews_detail_api_view, name='review-detail'),
+    path('products/', ProductListCreateAPIView.as_view(), name='products_list'),
+    path('products/<int:pk>/', ProductRetrieveUpdateDestroyAPIView.as_view(), name='products_detail'),
+    path('reviews/', ReviewListCreateAPIView.as_view(), name='reviews_list'),
+    path('reviews/<int:pk>/', ReviewRetrieveUpdateDestroyAPIView.as_view(), name='reviews_detail'),
+    path('categories/', CategoryListCreateAPIView.as_view(), name='categories_list'),
+    path('categories/<int:pk>/', CategoryRetrieveUpdateDestroyAPIView.as_view(), name='categories_detail'),
 ]
