@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'product',
     'user',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -91,11 +92,12 @@ EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'  # Ваш пароль от email
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME_DB'),
-        'USER': os.environ.get('USER_DB'),
-        'PASSWORD': os.environ.get('PASSWORD_DB'),
-        'HOST': os.environ.get('HOST_DB'),
-        'PORT': os.environ.get('PORT'),
+        'NAME': BASE_DIR / 'db.sqlite3'
+        # 'NAME': os.environ.get('NAME_DB'),
+        # 'USER': os.environ.get('USER_DB'),
+        # 'PASSWORD': os.environ.get('PASSWORD_DB'),
+        # 'HOST': os.environ.get('HOST_DB'),
+        # 'PORT': os.environ.get('PORT'),
     }
 }
 
